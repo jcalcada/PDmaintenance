@@ -131,7 +131,24 @@ function main() {
 						$('#result').append('Service ' + name + ' was disabled<br>\n');
 					}
 				};
+				var param2 = {
+					data: {
+						"incident": {
+    	        			"type": "incident",
+        	    			"title": "Service: " + name + " has been put in maintenance",
+            				"service": {
+                				"id": "PBQU3G3",
+                				"type": "service_reference"
+            				}
+            			}
+  					},
+					success: function() {
+						$('#result').append('Notification of ' + name + ' DOWN sent<br>\n');
+					}
+				};
+
 				PDRequest(getParameterByName('token'), 'services/' + this.id, 'put', params);
+				PDRequest(getParameterByName('token'), 'incidents', 'post', param2);
 			}
 		});
 
