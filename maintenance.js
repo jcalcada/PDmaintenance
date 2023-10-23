@@ -4,7 +4,7 @@ function getParameterByName(name) {
     name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
     var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
         results = regex.exec(location.search);
-    return results === null ? null : decodeURIComponent(results[1].replace(/\+/g, " "));
+    return results === null ? null : decodeURIComponent(results[1]);
 }
 
 function PDRequest(token, endpoint, method, options) {
@@ -16,7 +16,7 @@ function PDRequest(token, endpoint, method, options) {
 		headers: {
 			"Authorization": "Token token=" + token,
 			"Accept": "application/vnd.pagerduty+json;version=2",
-			"From": "jcalcada@pagerduty.com"
+			"From": "yoursuser@example.com"
 		},
 		error: function(err) {
 			var alertStr = "Error '" + err.status + " - " + err.statusText + "' while attempting " + method + " request to '" + endpoint + "'";
