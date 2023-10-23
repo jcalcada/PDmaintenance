@@ -16,7 +16,7 @@ function PDRequest(token, endpoint, method, options) {
 		headers: {
 			"Authorization": "Token token=" + token,
 			"Accept": "application/vnd.pagerduty+json;version=2",
-			"From": "yoursuser@example.com"
+			"From": "jcalcada@pagerduty.com"
 		},
 		error: function(err) {
 			var alertStr = "Error '" + err.status + " - " + err.statusText + "' while attempting " + method + " request to '" + endpoint + "'";
